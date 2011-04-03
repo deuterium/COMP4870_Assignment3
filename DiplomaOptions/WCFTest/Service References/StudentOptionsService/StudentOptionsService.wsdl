@@ -4,7 +4,7 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:2792/OptionsWebsite/StudentOptionsService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:2792/OptionsWebsite/StudentOptionsService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:2792/OptionsWebsite/StudentOptionsService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/" />
+      <xsd:import schemaLocation="http://localhost:2792/OptionsWebsite/StudentOptionsService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IStudentOptionsService_getActiveOptions_InputMessage">
@@ -13,16 +13,35 @@
   <wsdl:message name="IStudentOptionsService_getActiveOptions_OutputMessage">
     <wsdl:part name="parameters" element="tns:getActiveOptionsResponse" />
   </wsdl:message>
+  <wsdl:message name="IStudentOptionsService_boolsubmitOptions_InputMessage">
+    <wsdl:part name="parameters" element="tns:boolsubmitOptions" />
+  </wsdl:message>
+  <wsdl:message name="IStudentOptionsService_boolsubmitOptions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:boolsubmitOptionsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IStudentOptionsService">
     <wsdl:operation name="getActiveOptions">
       <wsdl:input wsaw:Action="http://tempuri.org/IStudentOptionsService/getActiveOptions" message="tns:IStudentOptionsService_getActiveOptions_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IStudentOptionsService/getActiveOptionsResponse" message="tns:IStudentOptionsService_getActiveOptions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="boolsubmitOptions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStudentOptionsService/boolsubmitOptions" message="tns:IStudentOptionsService_boolsubmitOptions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStudentOptionsService/boolsubmitOptionsResponse" message="tns:IStudentOptionsService_boolsubmitOptions_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IStudentOptionsService" type="tns:IStudentOptionsService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="getActiveOptions">
       <soap:operation soapAction="http://tempuri.org/IStudentOptionsService/getActiveOptions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="boolsubmitOptions">
+      <soap:operation soapAction="http://tempuri.org/IStudentOptionsService/boolsubmitOptions" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

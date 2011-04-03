@@ -30,7 +30,9 @@ namespace OptionsSilverlight
 
         void prxy_boolsubmitOptionsCompleted(object sender, boolsubmitOptionsCompletedEventArgs e)
         {
-            throw new NotImplementedException();
+            CompletePopup c = new CompletePopup();
+            c.Show();
+            clearFields();
         }
 
         void prxy_getActiveOptionsCompleted(object sender, StudentOptionsService.getActiveOptionsCompletedEventArgs e)
@@ -68,9 +70,6 @@ namespace OptionsSilverlight
                 prxy.boolsubmitOptionsAsync(StudentNumber.Text, FirstName.Text, LastName.Text
                     , FirstOption.SelectedValue.ToString(), SecondOption.SelectedValue.ToString()
                     , ThirdOption.SelectedValue.ToString(), FourthOption.SelectedValue.ToString());
-                CompletePopup c = new CompletePopup();
-                c.Show();
-                clearFields();
             }
         }
 

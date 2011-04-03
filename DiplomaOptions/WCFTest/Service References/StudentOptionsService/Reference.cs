@@ -9,61 +9,17 @@
 //------------------------------------------------------------------------------
 
 namespace WCFTest.StudentOptionsService {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Option", Namespace="http://schemas.datacontract.org/2004/07/")]
-    [System.SerializableAttribute()]
-    public partial class Option : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string optionNameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string optionName {
-            get {
-                return this.optionNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.optionNameField, value) != true)) {
-                    this.optionNameField = value;
-                    this.RaisePropertyChanged("optionName");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="StudentOptionsService.IStudentOptionsService")]
     public interface IStudentOptionsService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentOptionsService/getActiveOptions", ReplyAction="http://tempuri.org/IStudentOptionsService/getActiveOptionsResponse")]
-        WCFTest.StudentOptionsService.Option[] getActiveOptions();
+        string[] getActiveOptions();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentOptionsService/boolsubmitOptions", ReplyAction="http://tempuri.org/IStudentOptionsService/boolsubmitOptionsResponse")]
+        bool boolsubmitOptions(string studentNumber, string firstName, string lastName, string firstOption, string secondOption, string thirdOption, string fourthOption);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -93,8 +49,12 @@ namespace WCFTest.StudentOptionsService {
                 base(binding, remoteAddress) {
         }
         
-        public WCFTest.StudentOptionsService.Option[] getActiveOptions() {
+        public string[] getActiveOptions() {
             return base.Channel.getActiveOptions();
+        }
+        
+        public bool boolsubmitOptions(string studentNumber, string firstName, string lastName, string firstOption, string secondOption, string thirdOption, string fourthOption) {
+            return base.Channel.boolsubmitOptions(studentNumber, firstName, lastName, firstOption, secondOption, thirdOption, fourthOption);
         }
     }
 }

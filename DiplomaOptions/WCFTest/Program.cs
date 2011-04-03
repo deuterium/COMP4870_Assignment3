@@ -12,9 +12,7 @@ namespace WCFTest
         {
             StudentOptionsService.StudentOptionsServiceClient pxy = new StudentOptionsService.StudentOptionsServiceClient();
 
-            var test = pxy.getActiveOptions();
-            foreach (var i in test)
-                Console.WriteLine(i);
+            pxy.boolsubmitOptions("", "", "", "", "", "", "");
             Console.ReadKey();
         }
     }

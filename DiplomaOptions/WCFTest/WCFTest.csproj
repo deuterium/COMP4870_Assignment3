@@ -68,9 +68,6 @@
     <None Include="Service References\StudentOptionsService\StudentOptionsService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\StudentOptionsService\WCFTest.StudentOptionsService.Option.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\StudentOptionsService\" />

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:2792/OptionsWebsite/StudentOptionsService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/" />
+  <xs:import schemaLocation="http://localhost:2792/OptionsWebsite/StudentOptionsService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:element name="getActiveOptions">
     <xs:complexType>
       <xs:sequence />
@@ -9,7 +9,27 @@
   <xs:element name="getActiveOptionsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="getActiveOptionsResult" nillable="true" type="q1:ArrayOfOption" />
+        <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="getActiveOptionsResult" nillable="true" type="q1:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="boolsubmitOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="studentNumber" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="firstName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="lastName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="firstOption" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="secondOption" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="thirdOption" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fourthOption" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="boolsubmitOptionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="boolsubmitOptionsResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
