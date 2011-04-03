@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DiplomaOptionsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="DiplomaOptionsModelStoreContainer">
+          <EntitySet Name="Options" EntityType="DiplomaOptionsModel.Store.Options" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StudentOptionChoices" EntityType="DiplomaOptionsModel.Store.StudentOptionChoices" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Choices_Options_First" Association="DiplomaOptionsModel.Store.FK_Choices_Options_First">
+            <End Role="Options" EntitySet="Options" />
+            <End Role="StudentOptionChoices" EntitySet="StudentOptionChoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Choices_Options_Fourth" Association="DiplomaOptionsModel.Store.FK_Choices_Options_Fourth">
+            <End Role="Options" EntitySet="Options" />
+            <End Role="StudentOptionChoices" EntitySet="StudentOptionChoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Choices_Options_Second" Association="DiplomaOptionsModel.Store.FK_Choices_Options_Second">
+            <End Role="Options" EntitySet="Options" />
+            <End Role="StudentOptionChoices" EntitySet="StudentOptionChoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Choices_Options_Third" Association="DiplomaOptionsModel.Store.FK_Choices_Options_Third">
+            <End Role="Options" EntitySet="Options" />
+            <End Role="StudentOptionChoices" EntitySet="StudentOptionChoices" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Options">
+          <Key>
+            <PropertyRef Name="Title" />
+          </Key>
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentOptionChoices">
+          <Key>
+            <PropertyRef Name="ChoiceId" />
+          </Key>
+          <Property Name="ChoiceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="StudentNumber" Type="char" Nullable="false" MaxLength="9" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="40" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="40" />
+          <Property Name="FirstChoice" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="SecondChoice" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ThirdChoice" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="FourthChoice" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Choices_Options_First">
+          <End Role="Options" Type="DiplomaOptionsModel.Store.Options" Multiplicity="1" />
+          <End Role="StudentOptionChoices" Type="DiplomaOptionsModel.Store.StudentOptionChoices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Options">
+              <PropertyRef Name="Title" />
+            </Principal>
+            <Dependent Role="StudentOptionChoices">
+              <PropertyRef Name="FirstChoice" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Choices_Options_Fourth">
+          <End Role="Options" Type="DiplomaOptionsModel.Store.Options" Multiplicity="1" />
+          <End Role="StudentOptionChoices" Type="DiplomaOptionsModel.Store.StudentOptionChoices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Options">
+              <PropertyRef Name="Title" />
+            </Principal>
+            <Dependent Role="StudentOptionChoices">
+              <PropertyRef Name="FourthChoice" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Choices_Options_Second">
+          <End Role="Options" Type="DiplomaOptionsModel.Store.Options" Multiplicity="1" />
+          <End Role="StudentOptionChoices" Type="DiplomaOptionsModel.Store.StudentOptionChoices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Options">
+              <PropertyRef Name="Title" />
+            </Principal>
+            <Dependent Role="StudentOptionChoices">
+              <PropertyRef Name="SecondChoice" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Choices_Options_Third">
+          <End Role="Options" Type="DiplomaOptionsModel.Store.Options" Multiplicity="1" />
+          <End Role="StudentOptionChoices" Type="DiplomaOptionsModel.Store.StudentOptionChoices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Options">
+              <PropertyRef Name="Title" />
+            </Principal>
+            <Dependent Role="StudentOptionChoices">
+              <PropertyRef Name="ThirdChoice" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DiplomaOptionsModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="DiplomaOptionsEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Options" EntityType="DiplomaOptionsModel.Option" />
+          <EntitySet Name="StudentOptionChoices" EntityType="DiplomaOptionsModel.StudentOptionChoice" />
+          <AssociationSet Name="FK_Choices_Options_First" Association="DiplomaOptionsModel.FK_Choices_Options_First">
+            <End Role="Options" EntitySet="Options" />
+            <End Role="StudentOptionChoices" EntitySet="StudentOptionChoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Choices_Options_Fourth" Association="DiplomaOptionsModel.FK_Choices_Options_Fourth">
+            <End Role="Options" EntitySet="Options" />
+            <End Role="StudentOptionChoices" EntitySet="StudentOptionChoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Choices_Options_Second" Association="DiplomaOptionsModel.FK_Choices_Options_Second">
+            <End Role="Options" EntitySet="Options" />
+            <End Role="StudentOptionChoices" EntitySet="StudentOptionChoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Choices_Options_Third" Association="DiplomaOptionsModel.FK_Choices_Options_Third">
+            <End Role="Options" EntitySet="Options" />
+            <End Role="StudentOptionChoices" EntitySet="StudentOptionChoices" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Option">
+          <Key>
+            <PropertyRef Name="Title" />
+          </Key>
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="StudentOptionChoices" Relationship="DiplomaOptionsModel.FK_Choices_Options_First" FromRole="Options" ToRole="StudentOptionChoices" />
+          <NavigationProperty Name="StudentOptionChoices1" Relationship="DiplomaOptionsModel.FK_Choices_Options_Fourth" FromRole="Options" ToRole="StudentOptionChoices" />
+          <NavigationProperty Name="StudentOptionChoices2" Relationship="DiplomaOptionsModel.FK_Choices_Options_Second" FromRole="Options" ToRole="StudentOptionChoices" />
+          <NavigationProperty Name="StudentOptionChoices3" Relationship="DiplomaOptionsModel.FK_Choices_Options_Third" FromRole="Options" ToRole="StudentOptionChoices" />
+        </EntityType>
+        <EntityType Name="StudentOptionChoice">
+          <Key>
+            <PropertyRef Name="ChoiceId" />
+          </Key>
+          <Property Name="ChoiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="StudentNumber" Type="String" Nullable="false" MaxLength="9" Unicode="false" FixedLength="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false" />
+          <Property Name="FirstChoice" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="SecondChoice" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ThirdChoice" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FourthChoice" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Option" Relationship="DiplomaOptionsModel.FK_Choices_Options_First" FromRole="StudentOptionChoices" ToRole="Options" />
+          <NavigationProperty Name="Option1" Relationship="DiplomaOptionsModel.FK_Choices_Options_Fourth" FromRole="StudentOptionChoices" ToRole="Options" />
+          <NavigationProperty Name="Option2" Relationship="DiplomaOptionsModel.FK_Choices_Options_Second" FromRole="StudentOptionChoices" ToRole="Options" />
+          <NavigationProperty Name="Option3" Relationship="DiplomaOptionsModel.FK_Choices_Options_Third" FromRole="StudentOptionChoices" ToRole="Options" />
+        </EntityType>
+        <Association Name="FK_Choices_Options_First">
+          <End Role="Options" Type="DiplomaOptionsModel.Option" Multiplicity="1" />
+          <End Role="StudentOptionChoices" Type="DiplomaOptionsModel.StudentOptionChoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Options">
+              <PropertyRef Name="Title" />
+            </Principal>
+            <Dependent Role="StudentOptionChoices">
+              <PropertyRef Name="FirstChoice" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Choices_Options_Fourth">
+          <End Role="Options" Type="DiplomaOptionsModel.Option" Multiplicity="1" />
+          <End Role="StudentOptionChoices" Type="DiplomaOptionsModel.StudentOptionChoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Options">
+              <PropertyRef Name="Title" />
+            </Principal>
+            <Dependent Role="StudentOptionChoices">
+              <PropertyRef Name="FourthChoice" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Choices_Options_Second">
+          <End Role="Options" Type="DiplomaOptionsModel.Option" Multiplicity="1" />
+          <End Role="StudentOptionChoices" Type="DiplomaOptionsModel.StudentOptionChoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Options">
+              <PropertyRef Name="Title" />
+            </Principal>
+            <Dependent Role="StudentOptionChoices">
+              <PropertyRef Name="SecondChoice" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Choices_Options_Third">
+          <End Role="Options" Type="DiplomaOptionsModel.Option" Multiplicity="1" />
+          <End Role="StudentOptionChoices" Type="DiplomaOptionsModel.StudentOptionChoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Options">
+              <PropertyRef Name="Title" />
+            </Principal>
+            <Dependent Role="StudentOptionChoices">
+              <PropertyRef Name="ThirdChoice" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DiplomaOptionsModelStoreContainer" CdmEntityContainer="DiplomaOptionsEntities1">
+          <EntitySetMapping Name="Options"><EntityTypeMapping TypeName="DiplomaOptionsModel.Option"><MappingFragment StoreEntitySet="Options">
+            <ScalarProperty Name="Title" ColumnName="Title" />
+            <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="StudentOptionChoices"><EntityTypeMapping TypeName="DiplomaOptionsModel.StudentOptionChoice"><MappingFragment StoreEntitySet="StudentOptionChoices">
+            <ScalarProperty Name="ChoiceId" ColumnName="ChoiceId" />
+            <ScalarProperty Name="Year" ColumnName="Year" />
+            <ScalarProperty Name="StudentNumber" ColumnName="StudentNumber" />
+            <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+            <ScalarProperty Name="LastName" ColumnName="LastName" />
+            <ScalarProperty Name="FirstChoice" ColumnName="FirstChoice" />
+            <ScalarProperty Name="SecondChoice" ColumnName="SecondChoice" />
+            <ScalarProperty Name="ThirdChoice" ColumnName="ThirdChoice" />
+            <ScalarProperty Name="FourthChoice" ColumnName="FourthChoice" />
+            <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="StudentOptionsModel">
+        <EntityTypeShape EntityType="DiplomaOptionsModel.Option" Width="1.5" PointX="0.75" PointY="1.75" Height="2.1725878906250005" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomaOptionsModel.StudentOptionChoice" Width="2.125" PointX="3" PointY="1" Height="3.7109993489583326" IsExpanded="true" />
+        <AssociationConnector Association="DiplomaOptionsModel.FK_Choices_Options_First" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="3.1403342692057286" />
+          <ConnectorPoint PointX="3" PointY="3.1403342692057286" />
+        </AssociationConnector>
+        <AssociationConnector Association="DiplomaOptionsModel.FK_Choices_Options_Fourth" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="3.5939610799153643" />
+          <ConnectorPoint PointX="3" PointY="3.5939610799153643" />
+        </AssociationConnector>
+        <AssociationConnector Association="DiplomaOptionsModel.FK_Choices_Options_Second" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.57710459391276" />
+          <ConnectorPoint PointX="3" PointY="2.57710459391276" />
+        </AssociationConnector>
+        <AssociationConnector Association="DiplomaOptionsModel.FK_Choices_Options_Third" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.10105229695638" />
+          <ConnectorPoint PointX="3" PointY="2.10105229695638" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

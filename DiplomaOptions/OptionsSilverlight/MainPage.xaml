@@ -4,9 +4,30 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    d:DesignHeight="300" d:DesignWidth="400">
-
-    <Grid x:Name="LayoutRoot" Background="White">
-
+    d:DesignHeight="310" d:DesignWidth="400" xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk">
+    <Grid x:Name="LayoutRoot" Height="310" Opacity="100" Width="400">
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="188,129,0,0" Name="StudentNumber" VerticalAlignment="Top" Width="200" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="188,100,0,0" Name="FirstName" VerticalAlignment="Top" Width="200" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="188,71,0,0" Name="LastName" VerticalAlignment="Top" Width="200" />
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="188,158,0,0" Name="FirstOption" VerticalAlignment="Top" Width="200" />
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="188,187,0,0" Name="SecondOption" VerticalAlignment="Top" Width="200" />
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="188,216,0,0" Name="ThirdOption" VerticalAlignment="Top" Width="200" />
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="188,245,0,0" Name="FourthOption" VerticalAlignment="Top" Width="200" />
+        <sdk:Label Height="26" HorizontalAlignment="Left" Name="label1" VerticalAlignment="Top" Width="400" Content="BCIT Computing Department Option Selection Form" FontSize="15" FontStyle="Normal" Margin="4,2,0,0" Foreground="#FFEBFF00" />
+        <Button Content="Submit" Height="23" HorizontalAlignment="Left" Margin="213,277,0,0" Name="SubmitButton" VerticalAlignment="Top" Width="175" Click="SubmitButton_Click" />
+        <Button Content="Clear" Height="23" HorizontalAlignment="Left" Margin="12,277,0,0" Name="ClearButton" VerticalAlignment="Top" Width="175" Click="ClearButton_Click" />
+        <sdk:Label Height="28" HorizontalAlignment="Left" Margin="12,71,0,0" Name="StudentNumberLabel" VerticalAlignment="Top" Width="120" Content="Student Number:" FontWeight="Bold" />
+        <sdk:Label Height="28" HorizontalAlignment="Left" Margin="12,100,0,0" Name="FirstNameLabel" VerticalAlignment="Top" Width="120" Content="First Name: " FontWeight="Bold" />
+        <sdk:Label Height="28" HorizontalAlignment="Left" Margin="12,129,0,0" Name="LastNameLabel" VerticalAlignment="Top" Width="120" Content="Last Name: " FontWeight="Bold" />
+        <sdk:Label Height="28" HorizontalAlignment="Left" Margin="12,158,0,0" Name="FirstOptionLabel" VerticalAlignment="Top" Width="144" Content="First Option Choice: " FontWeight="Bold" />
+        <sdk:Label Height="28" HorizontalAlignment="Left" Margin="12,187,0,0" Name="SecondOptionLabel" VerticalAlignment="Top" Width="144" Content="Second Option Choice: " FontWeight="Bold" />
+        <sdk:Label Height="28" HorizontalAlignment="Left" Margin="12,216,0,0" Name="ThirdOptionLabel" VerticalAlignment="Top" Width="144" Content="Third Option Choice: " FontWeight="Bold" />
+        <sdk:Label Height="28" HorizontalAlignment="Left" Margin="12,245,0,0" Name="FourthOptionLabel" VerticalAlignment="Top" Width="144" Content="Fourth Option Choice: " FontWeight="Bold" />
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF0050AA" Offset="0" />
+                <GradientStop Color="#FFE6EEF2" Offset="1" />
+            </LinearGradientBrush>
+        </Grid.Background>
     </Grid>
 </UserControl>
