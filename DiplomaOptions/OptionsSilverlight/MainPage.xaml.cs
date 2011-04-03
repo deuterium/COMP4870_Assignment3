@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using OptionsSilverlight.StudentOptionsService;
+using System.Windows.Controls.Primitives;
 
 namespace OptionsSilverlight
 {
@@ -23,6 +24,13 @@ namespace OptionsSilverlight
 
             prxy.getActiveOptionsCompleted += new EventHandler<StudentOptionsService.getActiveOptionsCompletedEventArgs>(prxy_getActiveOptionsCompleted);
             prxy.getActiveOptionsAsync();
+
+            prxy.boolsubmitOptionsCompleted += new EventHandler<boolsubmitOptionsCompletedEventArgs>(prxy_boolsubmitOptionsCompleted);
+        }
+
+        void prxy_boolsubmitOptionsCompleted(object sender, boolsubmitOptionsCompletedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         void prxy_getActiveOptionsCompleted(object sender, StudentOptionsService.getActiveOptionsCompletedEventArgs e)
@@ -35,6 +43,11 @@ namespace OptionsSilverlight
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
+            clearFields();
+        }
+
+        private void clearFields()
+        {
             StudentNumber.Text = "";
             FirstName.Text = "";
             LastName.Text = "";
@@ -46,12 +59,24 @@ namespace OptionsSilverlight
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (validation() != true)
+            {
+
+            }
+            else if (validation())
+            {
+                prxy.boolsubmitOptionsAsync(StudentNumber.Text, FirstName.Text, LastName.Text
+                    , FirstOption.SelectedValue.ToString(), SecondOption.SelectedValue.ToString()
+                    , ThirdOption.SelectedValue.ToString(), FourthOption.SelectedValue.ToString());
+                CompletePopup c = new CompletePopup();
+                c.Show();
+                clearFields();
+            }
         }
 
         private bool validation() 
         {
-            return false;
+            return true;
         }
     }
 }
