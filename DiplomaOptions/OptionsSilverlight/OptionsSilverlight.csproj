@@ -114,14 +114,6 @@
     <None Include="Service References\StudentOptionsService\OptionsSilverlight.StudentOptionsService.SelectionDetail.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\StudentOptionsService\StudentOptionsService.disco" />
-    <None Include="Service References\StudentOptionsService\configuration91.svcinfo" />
-    <None Include="Service References\StudentOptionsService\configuration.svcinfo" />
-    <None Include="Service References\StudentOptionsService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <Content Include="ServiceReferences.ClientConfig" />
     <None Include="Service References\StudentOptionsService\StudentOptionsService.wsdl" />
     <None Include="Service References\StudentOptionsService\StudentOptionsService.xsd">
       <SubType>Designer</SubType>
@@ -132,12 +124,28 @@
     <None Include="Service References\StudentOptionsService\StudentOptionsService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="ServiceReferences.ClientConfig" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\StudentOptionsService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StudentOptionsService\StudentOptionsService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StudentOptionsService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StudentOptionsService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StudentOptionsService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

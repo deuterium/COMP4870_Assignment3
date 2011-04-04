@@ -15,10 +15,30 @@ namespace OptionsWP7
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        StudentOptionsService.StudentOptionsServiceClient prxy;
         // Constructor
         public MainPage()
         {
             InitializeComponent();
+            prxy = new StudentOptionsService.StudentOptionsServiceClient();
+
+            prxy.GetStudentChoicesCompleted += new EventHandler<StudentOptionsService.GetStudentChoicesCompletedEventArgs>(prxy_GetStudentChoicesCompleted);
+        }
+
+        void prxy_GetStudentChoicesCompleted(object sender, StudentOptionsService.GetStudentChoicesCompletedEventArgs e)
+        {
+            textBlock1.Text = "Results: " + e.Result.Count;
+            lbSelections.ItemsSource = e.Result.Select(s => s);
+        }
+
+        private void tbYear_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            tbYear.Text = "";
+        }
+
+        private void buttonGetSelections_Click(object sender, RoutedEventArgs e)
+        {
+            prxy.GetStudentChoicesAsync(Convert.ToInt32(2011));
         }
     }
 }

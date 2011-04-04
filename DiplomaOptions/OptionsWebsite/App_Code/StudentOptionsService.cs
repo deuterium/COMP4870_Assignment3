@@ -37,40 +37,21 @@ public class StudentOptionsService : IStudentOptionsService
     }
 
     public List<SelectionDetail> GetStudentChoices(int year)
-    { return null; }
-
-    //public List<string> getActiveOptions()
-    //{
-    //    return dipo.Options.Where(s => s.IsActive).Select(s => s.Title).ToList();
-    //}
-
-    //public bool boolsubmitOptions(string studentNumber, string firstName, string lastName,
-    //    string firstOption, string secondOption, string thirdOption, string fourthOption)
-    //{
-    //    StudentOptionChoice soc = new StudentOptionChoice()
-    //    {
-    //        CreateDate = DateTime.Now.Date,
-    //        Year = DateTime.Now.Year,
-    //        StudentNumber = studentNumber,
-    //        FirstName = firstName,
-    //        LastName = lastName,
-    //        FirstChoice = firstOption,
-    //        SecondChoice = secondOption,
-    //        ThirdChoice = thirdOption,
-    //        FourthChoice = fourthOption
-    //    };
-
-    //    try
-    //    {
-    //        dipo.AddToStudentOptionChoices(soc);
-    //        dipo.SaveChanges();
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        ex.ToString();
-    //        return false;
-    //    }
-
-    //    return true;
-    //}
+    {
+        return cxt.StudentOptionChoices
+            .Where(s => s.Year == year)
+            .Select(s => new SelectionDetail()
+            {
+                ChoiceId = s.ChoiceId,
+                StudentNumber = s.StudentNumber,
+                FirstName = s.FirstName,
+                LastName = s.LastName,
+                FirstChoice = s.FirstChoice,
+                SecondChoice = s.SecondChoice,
+                ThirdChoice = s.ThirdChoice,
+                FourthChoice = s.FourthChoice,
+                Year = s.Year,
+                CreateDate = s.CreateDate
+            }).ToList();
+    }
 }

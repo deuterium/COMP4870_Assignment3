@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="88b865a2-c5c4-4d75-82f1-8b47477a13af" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f2de5d44-142a-4b1c-8d21-a8c6689d0fa3" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -23,11 +23,11 @@
     <MetadataSource Address="http://localhost:2792/OptionsWebsite/StudentOptionsService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="StudentOptionsService.wsdl" MetadataType="Wsdl" ID="33d97ecf-ed04-4f48-9a5d-5708b37adbaa" SourceId="1" SourceUrl="http://localhost:2792/OptionsWebsite/StudentOptionsService.svc?wsdl" />
-    <MetadataFile FileName="StudentOptionsService.disco" MetadataType="Disco" ID="9ba915db-6fb7-4682-ae7a-3142db0d532d" SourceId="1" SourceUrl="http://localhost:2792/OptionsWebsite/StudentOptionsService.svc?disco" />
-    <MetadataFile FileName="StudentOptionsService.xsd" MetadataType="Schema" ID="01d61d9b-d13d-49ff-a9c0-8c1f1bc3e773" SourceId="1" SourceUrl="http://localhost:2792/OptionsWebsite/StudentOptionsService.svc?xsd=xsd2" />
-    <MetadataFile FileName="StudentOptionsService1.xsd" MetadataType="Schema" ID="122d0c34-0bc5-4ed7-8a7e-85c174110f27" SourceId="1" SourceUrl="http://localhost:2792/OptionsWebsite/StudentOptionsService.svc?xsd=xsd1" />
-    <MetadataFile FileName="StudentOptionsService2.xsd" MetadataType="Schema" ID="c781501c-90e5-45d5-b4e7-058813d6e5f2" SourceId="1" SourceUrl="http://localhost:2792/OptionsWebsite/StudentOptionsService.svc?xsd=xsd0" />
+    <MetadataFile FileName="StudentOptionsService.wsdl" MetadataType="Wsdl" ID="e0df3896-d800-4907-9c02-7974ac68c12b" SourceId="1" SourceUrl="http://localhost:2792/OptionsWebsite/StudentOptionsService.svc?wsdl" />
+    <MetadataFile FileName="StudentOptionsService.disco" MetadataType="Disco" ID="0f848618-dd0b-468e-aaaf-57cecc3df641" SourceId="1" SourceUrl="http://localhost:2792/OptionsWebsite/StudentOptionsService.svc?disco" />
+    <MetadataFile FileName="StudentOptionsService.xsd" MetadataType="Schema" ID="f3e30146-2785-49fb-9c7d-9336686b44d3" SourceId="1" SourceUrl="http://localhost:2792/OptionsWebsite/StudentOptionsService.svc?xsd=xsd2" />
+    <MetadataFile FileName="StudentOptionsService1.xsd" MetadataType="Schema" ID="8a972a84-0459-4cb4-9f07-051690249852" SourceId="1" SourceUrl="http://localhost:2792/OptionsWebsite/StudentOptionsService.svc?xsd=xsd1" />
+    <MetadataFile FileName="StudentOptionsService2.xsd" MetadataType="Schema" ID="20c59fde-add7-4cb5-b9f0-ce5f174ab7cc" SourceId="1" SourceUrl="http://localhost:2792/OptionsWebsite/StudentOptionsService.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

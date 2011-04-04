@@ -16,16 +16,14 @@ namespace OptionsSilverlight
 {
     public partial class MainPage : UserControl
     {
-        StudentOptionsService.StudentOptionsServiceClient prxy = new StudentOptionsService.StudentOptionsServiceClient();
 
         public MainPage()
         {
             InitializeComponent();
 
+            StudentOptionsService.StudentOptionsServiceClient prxy = new StudentOptionsService.StudentOptionsServiceClient();
             prxy.GetOptionsCompleted += new EventHandler<GetOptionsCompletedEventArgs>(prxy_GetOptionsCompleted);
             prxy.GetOptionsAsync();
-
-            prxy.AddOptionSelectionCompleted += new EventHandler<AddOptionSelectionCompletedEventArgs>(prxy_AddOptionSelectionCompleted);
         }
 
         void prxy_AddOptionSelectionCompleted(object sender, AddOptionSelectionCompletedEventArgs e)
@@ -72,6 +70,8 @@ namespace OptionsSilverlight
                 FourthChoice = FourthOption.SelectedValue.ToString()
             };
 
+            StudentOptionsService.StudentOptionsServiceClient prxy = new StudentOptionsService.StudentOptionsServiceClient();
+            prxy.AddOptionSelectionCompleted += new EventHandler<AddOptionSelectionCompletedEventArgs>(prxy_AddOptionSelectionCompleted);
             prxy.AddOptionSelectionAsync(selection);
         }
     }

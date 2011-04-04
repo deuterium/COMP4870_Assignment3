@@ -11,7 +11,7 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="True" xmlns:my="clr-namespace:Microsoft.Phone.Controls.Maps;assembly=Microsoft.Phone.Controls.Maps">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -22,14 +22,64 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="ApplicationTitle" Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock x:Name="ApplicationTitle" Text="Student Option Selections" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="PageTitle" Text="view selections" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0"></Grid>
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="384*" />
+                <ColumnDefinition Width="72*" />
+            </Grid.ColumnDefinitions>
+            <TextBox InputScope="Number" Height="72" HorizontalAlignment="Left" Margin="0,10,0,0" Name="tbYear" Text="Enter Year" VerticalAlignment="Top" Width="310" MouseLeftButtonDown="tbYear_MouseLeftButtonDown" />
+            <Button Content="Go" Height="72" HorizontalAlignment="Right" Margin="0,10,6,0" Name="buttonGetSelections" VerticalAlignment="Top" Width="154" Click="buttonGetSelections_Click" Grid.ColumnSpan="2" />
+            <ListBox Height="490" HorizontalAlignment="Left" Margin="12,111,0,0" Name="lbSelections" VerticalAlignment="Top" Width="430" Grid.ColumnSpan="2">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="White" BorderThickness="3" Margin="5">
+                            <StackPanel Width="430" Margin="5">
+                                <StackPanel Orientation="Horizontal" Height="25">
+                                    <TextBlock HorizontalAlignment="Left" Height="40" FontSize="18" Text="Choice ID: " />
+                                    <TextBlock HorizontalAlignment="Left" Height="40" FontSize="18" Text="{Binding ChoiceId}" Width="80" />
+                                    <TextBlock HorizontalAlignment="Right" Height="40" FontSize="18" Text="Student Number: " />
+                                    <TextBlock HorizontalAlignment="Right" Height="40" FontSize="18" Text="{Binding StudentNumber}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Height="25">
+                                    <TextBlock HorizontalAlignment="Right" Height="40" FontSize="18" Text="First Name: " />
+                                    <TextBlock HorizontalAlignment="Right" Height="40" FontSize="18" Text="{Binding FirstName}" Width="80" />
+                                    <TextBlock HorizontalAlignment="Right" Height="40" FontSize="18" Text="Last Name: " />
+                                    <TextBlock HorizontalAlignment="Right" Height="40" FontSize="18" Text="{Binding LastName}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock HorizontalAlignment="Right" Height="40" FontSize="18" Text="Date Submitted: " />
+                                    <TextBlock HorizontalAlignment="Right" Height="40" FontSize="18" Text="{Binding CreateDate}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Height="25">
+                                    <TextBlock HorizontalAlignment="Right" Height="40" FontSize="18" Text="First Choice: " />
+                                    <TextBlock HorizontalAlignment="Right" Height="40" FontSize="18" Text="{Binding FirstChoice}" Width="200" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Height="25">
+                                    <TextBlock HorizontalAlignment="Right" Height="40" FontSize="18" Text="Second Choice: " />
+                                    <TextBlock HorizontalAlignment="Right" Height="40" FontSize="18" Text="{Binding SecondChoice}" Width="200" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Height="25">
+                                    <TextBlock HorizontalAlignment="Right" Height="40" FontSize="18" Text="Third Choice: " />
+                                    <TextBlock HorizontalAlignment="Right" Height="40" FontSize="18" Text="{Binding ThirdChoice}" Width="200" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Height="25">
+                                    <TextBlock HorizontalAlignment="Right" Height="40" FontSize="18" Text="Fourth Choice: " />
+                                    <TextBlock HorizontalAlignment="Right" Height="40" FontSize="18" Text="{Binding FourthChoice}" Width="200" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <TextBlock Height="30" HorizontalAlignment="Left" Margin="12,75,0,0" Name="textBlock1" Text="Results displayed below" VerticalAlignment="Top" />
+        </Grid>
     </Grid>
- 
+
     <!--Sample code showing usage of ApplicationBar-->
     <!--<phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
