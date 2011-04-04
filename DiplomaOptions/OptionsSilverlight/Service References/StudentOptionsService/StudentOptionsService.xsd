@@ -1,9 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="ArrayOfstring">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfOptionDetail">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OptionDetail" nillable="true" type="tns:OptionDetail" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfstring" nillable="true" type="tns:ArrayOfstring" />
+  <xs:element name="ArrayOfOptionDetail" nillable="true" type="tns:ArrayOfOptionDetail" />
+  <xs:complexType name="OptionDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OptionDetail" nillable="true" type="tns:OptionDetail" />
+  <xs:complexType name="SelectionDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChoiceId" type="xs:int" />
+      <xs:element minOccurs="0" name="CreateDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FirstChoice" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FourthChoice" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SecondChoice" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StudentNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ThirdChoice" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Year" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SelectionDetail" nillable="true" type="tns:SelectionDetail" />
+  <xs:complexType name="ArrayOfSelectionDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SelectionDetail" nillable="true" type="tns:SelectionDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSelectionDetail" nillable="true" type="tns:ArrayOfSelectionDetail" />
 </xs:schema>

@@ -10,10 +10,19 @@ using DiplomaOptionsModel;
 [ServiceContract]
 public interface IStudentOptionsService
 {
-	[OperationContract]
-	List<string> getActiveOptions();
+    //[OperationContract]
+    //List<string> getActiveOptions();
+
+    //[OperationContract]
+    //bool boolsubmitOptions(string studentNumber, string firstName, string lastName,
+    //    string firstOption, string secondOption, string thirdOption, string fourthOption);
 
     [OperationContract]
-    bool boolsubmitOptions(string studentNumber, string firstName, string lastName,
-        string firstOption, string secondOption, string thirdOption, string fourthOption);
+    List<OptionDetail> GetOptions();
+
+    [OperationContract]
+    int AddOptionSelection(SelectionDetail selection);
+
+    [OperationContract]
+    List<SelectionDetail> GetStudentChoices(int year);
 }

@@ -403,7 +403,6 @@ namespace DiplomaOptionsModel
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        [Required(ErrorMessage="Student number is required.")]
         public global::System.String StudentNumber
         {
             get
@@ -428,7 +427,6 @@ namespace DiplomaOptionsModel
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        [Required(ErrorMessage = "First name is required.")]
         public global::System.String FirstName
         {
             get
@@ -453,7 +451,6 @@ namespace DiplomaOptionsModel
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        [Required(ErrorMessage = "Last name is required.")]
         public global::System.String LastName
         {
             get

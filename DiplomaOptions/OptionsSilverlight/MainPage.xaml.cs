@@ -22,25 +22,25 @@ namespace OptionsSilverlight
         {
             InitializeComponent();
 
-            prxy.getActiveOptionsCompleted += new EventHandler<StudentOptionsService.getActiveOptionsCompletedEventArgs>(prxy_getActiveOptionsCompleted);
-            prxy.getActiveOptionsAsync();
+            prxy.GetOptionsCompleted += new EventHandler<GetOptionsCompletedEventArgs>(prxy_GetOptionsCompleted);
+            prxy.GetOptionsAsync();
 
-            prxy.boolsubmitOptionsCompleted += new EventHandler<boolsubmitOptionsCompletedEventArgs>(prxy_boolsubmitOptionsCompleted);
+            prxy.AddOptionSelectionCompleted += new EventHandler<AddOptionSelectionCompletedEventArgs>(prxy_AddOptionSelectionCompleted);
         }
 
-        void prxy_boolsubmitOptionsCompleted(object sender, boolsubmitOptionsCompletedEventArgs e)
+        void prxy_AddOptionSelectionCompleted(object sender, AddOptionSelectionCompletedEventArgs e)
         {
             CompletePopup c = new CompletePopup();
             c.Show();
             clearFields();
         }
 
-        void prxy_getActiveOptionsCompleted(object sender, StudentOptionsService.getActiveOptionsCompletedEventArgs e)
+        void prxy_GetOptionsCompleted(object sender, GetOptionsCompletedEventArgs e)
         {
-            FirstOption.ItemsSource = e.Result;
-            SecondOption.ItemsSource = e.Result;
-            ThirdOption.ItemsSource = e.Result;
-            FourthOption.ItemsSource = e.Result;
+            FirstOption.ItemsSource = e.Result.Select(o => o.Title);
+            SecondOption.ItemsSource = e.Result.Select(o => o.Title);
+            ThirdOption.ItemsSource = e.Result.Select(o => o.Title);
+            FourthOption.ItemsSource = e.Result.Select(o => o.Title);
         }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
@@ -61,21 +61,18 @@ namespace OptionsSilverlight
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
-            if (validation() != true)
+            SelectionDetail selection = new SelectionDetail()
             {
+                StudentNumber = StudentNumber.Text,
+                FirstName = FirstName.Text,
+                LastName = LastName.Text,
+                FirstChoice = FirstOption.SelectedValue.ToString(),
+                SecondChoice = SecondOption.SelectedValue.ToString(),
+                ThirdChoice = ThirdOption.SelectedValue.ToString(),
+                FourthChoice = FourthOption.SelectedValue.ToString()
+            };
 
-            }
-            else if (validation())
-            {
-                prxy.boolsubmitOptionsAsync(StudentNumber.Text, FirstName.Text, LastName.Text
-                    , FirstOption.SelectedValue.ToString(), SecondOption.SelectedValue.ToString()
-                    , ThirdOption.SelectedValue.ToString(), FourthOption.SelectedValue.ToString());
-            }
-        }
-
-        private bool validation() 
-        {
-            return true;
+            prxy.AddOptionSelectionAsync(selection);
         }
     }
 }
