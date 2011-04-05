@@ -38,7 +38,7 @@ namespace OptionsWP7
 
         private void buttonGetSelections_Click(object sender, RoutedEventArgs e)
         {
-            prxy.GetStudentChoicesAsync(Convert.ToInt32(2011));
+            prxy.GetStudentChoicesAsync(Convert.ToInt32(tbYear.Text));
         }
     }
 }

@@ -11,6 +11,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using OptionsSilverlight.StudentOptionsService;
 using System.Windows.Controls.Primitives;
+using System.Text.RegularExpressions;
 
 namespace OptionsSilverlight
 {
@@ -59,20 +60,71 @@ namespace OptionsSilverlight
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
-            SelectionDetail selection = new SelectionDetail()
+            string valid;
+            if ((valid = Validation()) == null)
             {
-                StudentNumber = StudentNumber.Text,
-                FirstName = FirstName.Text,
-                LastName = LastName.Text,
-                FirstChoice = FirstOption.SelectedValue.ToString(),
-                SecondChoice = SecondOption.SelectedValue.ToString(),
-                ThirdChoice = ThirdOption.SelectedValue.ToString(),
-                FourthChoice = FourthOption.SelectedValue.ToString()
-            };
+                SelectionDetail selection = new SelectionDetail()
+                {
+                    StudentNumber = StudentNumber.Text,
+                    FirstName = FirstName.Text,
+                    LastName = LastName.Text,
+                    FirstChoice = FirstOption.SelectedValue.ToString(),
+                    SecondChoice = SecondOption.SelectedValue.ToString(),
+                    ThirdChoice = ThirdOption.SelectedValue.ToString(),
+                    FourthChoice = FourthOption.SelectedValue.ToString()
+                };
 
-            StudentOptionsService.StudentOptionsServiceClient prxy = new StudentOptionsService.StudentOptionsServiceClient();
-            prxy.AddOptionSelectionCompleted += new EventHandler<AddOptionSelectionCompletedEventArgs>(prxy_AddOptionSelectionCompleted);
-            prxy.AddOptionSelectionAsync(selection);
+                StudentOptionsService.StudentOptionsServiceClient prxy = new StudentOptionsService.StudentOptionsServiceClient();
+                prxy.AddOptionSelectionCompleted += new EventHandler<AddOptionSelectionCompletedEventArgs>(prxy_AddOptionSelectionCompleted);
+                prxy.AddOptionSelectionAsync(selection);
+            }
+            else
+            {
+                ErrorWindow err = new ErrorWindow(valid);
+                err.Show();
+            }
+        }
+
+        private string Validation()
+        {
+            string ErrorMesage = "";
+            if (StudentNumber.Text.Length == 0)
+            {
+                ErrorMesage += "Student number is required.,";
+            }
+            else if (StudentNumber.Text.Length != 0 && !Regex.IsMatch(StudentNumber.Text, "^[aA]0{2}[0-9]{6}")) 
+            {
+                ErrorMesage += "Student number must be in A00###### format.,";
+            }
+            else if (FirstName.Text.Length == 0)
+            {
+                ErrorMesage += "First name is required.,";
+            }
+            else if (LastName.Text.Length == 0)
+            {
+                ErrorMesage += "Last name is required.,";
+            }
+            else if (FirstOption.SelectedIndex == -1)
+            {
+                ErrorMesage += "First option selection required.,";
+            }
+            else if (SecondOption.SelectedIndex == -1)
+            {
+                ErrorMesage += "Second option selection required.,";
+            }
+            else if (ThirdOption.SelectedIndex == -1)
+            {
+                ErrorMesage += "Third option selection required.,";
+            }
+            else if (FourthOption.SelectedIndex == -1)
+            {
+                ErrorMesage += "Fourth option selection required.,";
+            }
+            else
+            {
+                return ErrorMesage;
+            }
+            return null;
         }
     }
 }
