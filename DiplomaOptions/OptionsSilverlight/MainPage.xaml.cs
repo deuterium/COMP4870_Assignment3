@@ -80,7 +80,8 @@ namespace OptionsSilverlight
             }
             else
             {
-                MessageBox.Show(results);
+                ErrorWindow ew = new ErrorWindow(results);
+                ew.Show();
             }
         }
 
@@ -106,19 +107,22 @@ namespace OptionsSilverlight
                 ErrorMessage += "Last name can only contain letters.\n";
             }
                         
-            if (FirstOption.SelectedIndex == -1) {
+            if (FirstOption.SelectedIndex < 0) {
                 ErrorMessage += "First option selection required.\n";
             }
-            
-            if (SecondOption.SelectedIndex == -1) {
+
+            if (SecondOption.SelectedIndex < 0)
+            {
                 ErrorMessage += "Second option selection required.\n";
             }
-            
-            if (ThirdOption.SelectedIndex == -1) {
+
+            if (ThirdOption.SelectedIndex < 0)
+            {
                 ErrorMessage += "Third option selection required.\n";
             }
-            
-            if (FourthOption.SelectedIndex == -1) {
+
+            if (FourthOption.SelectedIndex < 0)
+            {
                 ErrorMessage += "Fourth option selection required.\n";
             }
 
