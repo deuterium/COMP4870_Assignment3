@@ -87,42 +87,44 @@ namespace OptionsSilverlight
 
         private string Validation()
         {
-            string ErrorMesage = "";
-            if (StudentNumber.Text.Length == 0)
-            {
-                ErrorMesage += "Student number is required.,";
+            string ErrorMessage = "";
+
+            if (StudentNumber.Text.Equals(String.Empty)) {
+                ErrorMessage += "Student number is required.\n";
+            } else if (!(Regex.IsMatch(StudentNumber.Text, "^[aA]0{2}[0-9]{6}$"))) {
+                ErrorMessage += "Student number must be in in A00###### format.\n";
             }
-            else if (StudentNumber.Text.Length != 0 && !Regex.IsMatch(StudentNumber.Text, "^[aA]0{2}[0-9]{6}")) 
-            {
-                ErrorMesage += "Student number must be in A00###### format.,";
+
+            if (FirstName.Text.Equals(String.Empty)) {
+                ErrorMessage += "First name is required.\n";
+            } else if (!Regex.IsMatch(FirstName.Text, "^[A-Za-z']+$")) {
+                ErrorMessage += "First name can only contain letters.\n";
             }
-            else if (FirstName.Text.Length == 0)
-            {
-                ErrorMesage += "First name is required.,";
+
+            if (LastName.Text.Equals(String.Empty)) {
+                ErrorMessage += "Last name is required.\n";
+            } else if (!Regex.IsMatch(LastName.Text, "^[A-Za-z']+$")) {
+                ErrorMessage += "Last name can only contain letters.\n";
             }
-            else if (LastName.Text.Length == 0)
-            {
-                ErrorMesage += "Last name is required.,";
+                        
+            if (FirstOption.SelectedIndex == -1) {
+                ErrorMessage += "First option selection required.\n";
             }
-            else if (FirstOption.SelectedIndex == -1)
-            {
-                ErrorMesage += "First option selection required.,";
+            
+            if (SecondOption.SelectedIndex == -1) {
+                ErrorMessage += "Second option selection required.\n";
             }
-            else if (SecondOption.SelectedIndex == -1)
-            {
-                ErrorMesage += "Second option selection required.,";
+            
+            if (ThirdOption.SelectedIndex == -1) {
+                ErrorMessage += "Third option selection required.\n";
             }
-            else if (ThirdOption.SelectedIndex == -1)
-            {
-                ErrorMesage += "Third option selection required.,";
+            
+            if (FourthOption.SelectedIndex == -1) {
+                ErrorMessage += "Fourth option selection required.\n";
             }
-            else if (FourthOption.SelectedIndex == -1)
-            {
-                ErrorMesage += "Fourth option selection required.,";
-            }
-            else
-            {
-                return ErrorMesage;
+
+            if (!ErrorMessage.Equals(String.Empty)) {
+                return ErrorMessage;
             }
             return null;
         }

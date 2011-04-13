@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
+using System.Text.RegularExpressions;
 
 namespace OptionsWP7
 {
@@ -38,6 +39,10 @@ namespace OptionsWP7
 
         private void buttonGetSelections_Click(object sender, RoutedEventArgs e)
         {
+            if (!Regex.IsMatch(tbYear.Text, "^[0-9]{4}$")) {
+                tbYear.Text = String.Empty;
+                return;
+            }
             prxy.GetStudentChoicesAsync(Convert.ToInt32(tbYear.Text));
         }
     }
