@@ -60,8 +60,8 @@ namespace OptionsSilverlight
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
-            string valid;
-            if ((valid = Validation()) == null)
+            string results = String.Empty;
+            if ((results = isValidInput()).Equals(String.Empty))
             {
                 SelectionDetail selection = new SelectionDetail()
                 {
@@ -80,14 +80,13 @@ namespace OptionsSilverlight
             }
             else
             {
-                ErrorWindow err = new ErrorWindow(valid);
-                err.Show();
+                MessageBox.Show(results);
             }
         }
 
-        private string Validation()
+        private string isValidInput()
         {
-            string ErrorMessage = "";
+            string ErrorMessage = String.Empty;
 
             if (StudentNumber.Text.Equals(String.Empty)) {
                 ErrorMessage += "Student number is required.\n";
@@ -123,10 +122,7 @@ namespace OptionsSilverlight
                 ErrorMessage += "Fourth option selection required.\n";
             }
 
-            if (!ErrorMessage.Equals(String.Empty)) {
-                return ErrorMessage;
-            }
-            return null;
+            return ErrorMessage;
         }
     }
 }
