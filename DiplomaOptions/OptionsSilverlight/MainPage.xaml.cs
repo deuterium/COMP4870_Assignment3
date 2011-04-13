@@ -126,7 +126,54 @@ namespace OptionsSilverlight
                 ErrorMessage += "Fourth option selection required.\n";
             }
 
-            return ErrorMessage;
+            return ErrorMessage + isSameChoiceSelectedMultipleTimes();
+        }
+
+        private string isSameChoiceSelectedMultipleTimes()
+        {
+            string str = null;
+            Dictionary<string, string> choices = new Dictionary<string, string>();
+            if (!(this.FirstOption.SelectedIndex < 0))
+            {
+                choices.Add(this.FirstOption.SelectedItem.ToString(), "First Option");
+            }
+            if (!(this.FirstOption.SelectedIndex < 0))
+            {
+                if (!(this.SecondOption.SelectedIndex < 0))
+                {
+                    if (choices.ContainsKey(this.SecondOption.SelectedItem.ToString()))
+                    {
+                        str = ((str + "\n") + "'" + this.SecondOption.SelectedItem.ToString() + "'") + " cannot be chosen more than once.";
+                    }
+                    else
+                    {
+                        choices.Add(this.SecondOption.SelectedItem.ToString(), "Second Option");
+                    }
+                }
+            }
+            if (!(this.ThirdOption.SelectedIndex < 0))
+            {
+                if (!(this.ThirdOption.SelectedIndex < 0))
+                {
+                    if (choices.ContainsKey(this.ThirdOption.SelectedItem.ToString()))
+                    {
+                        str = ((str + "\n") + "'" + this.ThirdOption.SelectedItem.ToString() + "'") + " cannot be chosen more than once.";
+                    }
+                    else
+                    {
+                        choices.Add(this.ThirdOption.SelectedItem.ToString(), "Third Option");
+                    }
+                }
+            }
+            if (!(this.ThirdOption.SelectedIndex < 0))
+            {
+                if (choices.ContainsKey(this.FourthOption.SelectedItem.ToString()))
+                {
+                    return ((((str + "\n") + "'" + this.FourthOption.SelectedItem.ToString() + "'") + " has been chosen more than once."));
+                }
+                choices.Add(this.FourthOption.SelectedItem.ToString(), "Fourth Option");
+            }
+            return str;
         }
     }
 }
